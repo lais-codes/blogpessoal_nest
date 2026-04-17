@@ -4,7 +4,6 @@ import { Usuario } from "../entities/usuario.entity";
 import { JwtAuthGuard } from "../../auth/guard/jwt-auth.guard";
 import { ApiBearerAuth, ApiTags } from "@nestjs/swagger";
  
- 
 @ApiTags("Usuario")
 @Controller("/usuarios")
 @ApiBearerAuth()

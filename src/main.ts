@@ -14,16 +14,12 @@ async function bootstrap() {
   .addBearerAuth()
   .build();
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('/swagger', app, document);
+  SwaggerModule.setup('swagger', app, document);
   
   process.env.TZ = '-03:00'; // configuração do timezone
 
   app.useGlobalPipes(new ValidationPipe()); // configuração de validação de dados de entrada
-
   app.enableCors(); // configuração de cors para permitir requisições de outras origens
-
   await app.listen(process.env.PORT ?? 4000); // execução da aplicação nest, configuração da porta
 }
-bootstrap().catch((error) => {
-  console.error('Erro ao iniciar aplicação:', error);
-});
+bootstrap();
