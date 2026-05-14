@@ -16,6 +16,7 @@ export class PostagemService {
     return await this.postagemRepository.find({ // espera a resposta, que pode demorar - vai chegar no BD assim: select * from tb_postagem;
       relations: {
         tema: true,
+        usuario: true,
       },
     });
   }
@@ -28,6 +29,7 @@ export class PostagemService {
       },
       relations: {
         tema: true,
+        usuario: true,
       }
     });
 
@@ -44,6 +46,7 @@ export class PostagemService {
       },
       relations: {
         tema: true,
+        usuario: true,
       }
     })
   }
