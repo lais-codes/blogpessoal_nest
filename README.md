@@ -1,98 +1,215 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Blog Pessoal API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+API REST desenvolvida durante os estudos de **NestJS**, simulando o backend de uma aplicação de blog, permitindo o gerenciamento de usuários, postagens e temas.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+O projeto segue os princípios de arquitetura modular do NestJS e implementa autenticação utilizando JWT para proteger os endpoints privados.
 
-## Description
+---
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Tecnologias utilizadas
 
-## Project setup
+* NestJS
+* TypeScript
+* TypeORM
+* PostgreSQL
+* SQLite (desenvolvimento)
+* JWT (JSON Web Token)
+* Passport
+* Bcrypt
+* Class Validator
+* Swagger
+* Node.js
 
-```bash
-$ npm install
+---
+
+## 📁 Estrutura do projeto
+
+```
+src
+│
+├── auth
+│   ├── controllers
+│   ├── bcrypt
+│   ├── constants
+│   └── entities
+│
+├── postagem
+│   ├── controllers
+│   ├── entities
+│   ├── services
+│   └── repository
+│
+├── tema
+│   ├── controllers
+│   ├── entities
+│   ├── services
+│   └── repository
+│
+├── usuario
+│   ├── controller
+│   ├── entities
+│   ├── services
+│   └── repository
+│
+├── app.module.ts
+└── main.ts
 ```
 
-## Compile and run the project
+---
 
-```bash
-# development
-$ npm run start
+# Funcionalidades
 
-# watch mode
-$ npm run start:dev
+* Cadastro de usuários
+* Login com autenticação JWT
+* Criptografia de senha utilizando Bcrypt
+* CRUD completo de usuários
+* CRUD completo de postagens
+* CRUD completo de temas
+* Relacionamento entre usuários, postagens e temas
+* Validação dos dados enviados
+* Documentação automática com Swagger
 
-# production mode
-$ npm run start:prod
+---
+
+# Autenticação
+
+A autenticação utiliza **JWT (JSON Web Token)**.
+
+Após realizar o login, a API retorna um token que deve ser enviado em todas as requisições protegidas.
+
+Exemplo:
+
+```
+Authorization: Bearer seu_token_aqui
 ```
 
-## Run tests
+---
 
-```bash
-# unit tests
-$ npm run test
+# Documentação
 
-# e2e tests
-$ npm run test:e2e
+Após iniciar a aplicação, a documentação pode ser acessada em:
 
-# test coverage
-$ npm run test:cov
+```
+http://localhost:4000/swagger
 ```
 
-## Deployment
+# Como executar o projeto
 
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+## Clone o repositório
 
 ```bash
-$ npm install -g @nestjs/mau
-$ mau deploy
+git clone https://github.com/lais-codes/blogpessoal_nest
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Entre na pasta
 
-## Resources
+```bash
+cd blogpessoal_nest
+```
 
-Check out a few resources that may come in handy when working with NestJS:
+Instale as dependências
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+```bash
+npm install
+```
 
-## Support
+Configure as variáveis de ambiente.
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Exemplo:
 
-## Stay in touch
+```env
+DATABASE_URL=postgresql://usuario:senha@localhost:5432/blogpessoal
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+JWT_SECRET=minha_senha
 
-## License
+PORT=4000
+```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+Execute em modo desenvolvimento
+
+```bash
+npm run start:dev
+```
+
+Ou execute a versão de produção
+
+```bash
+npm run build
+
+npm run start:prod
+```
+
+---
+
+# Scripts disponíveis
+
+```bash
+npm run start
+```
+
+Inicia a aplicação.
+
+```bash
+npm run start:dev
+```
+
+Executa em modo desenvolvimento.
+
+```bash
+npm run build
+```
+
+Compila o projeto.
+
+```bash
+npm run start:prod
+```
+
+Executa a versão compilada.
+
+```bash
+npm run test
+```
+
+Executa os testes.
+
+---
+
+# Banco de dados
+
+O projeto utiliza PostgreSQL através do TypeORM.
+
+As entidades principais são:
+
+* Usuário
+* Postagem
+* Tema
+
+---
+
+# Principais conceitos aplicados
+
+* Arquitetura modular do NestJS
+* REST API
+* Controllers
+* Services
+* Repositories
+* Injeção de Dependência
+* DTOs
+* Validação de dados
+* Relacionamentos entre entidades
+* Autenticação JWT
+* Criptografia de senhas
+* Documentação Swagger
+
+---
+
+## Front-end
+
+O front-end desta aplicação foi desenvolvido em React e está disponível no repositório abaixo:
+
+🔗 https://github.com/lais-codes/blog_pessoal_react
+
+---
+
+Este projeto foi desenvolvido para fins de estudo e aprendizado durante a formação em desenvolvimento Full Stack da Generation Brasil.
